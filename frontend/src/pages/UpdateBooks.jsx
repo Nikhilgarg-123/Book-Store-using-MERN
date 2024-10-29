@@ -64,38 +64,81 @@ const UpdateBooks = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading) return <div className="text-center mt-4">Loading...</div>;
+  if (error) return <div className="text-center mt-4 text-red-600">Error: {error}</div>;
 
   return (
-    <div>
-      <h1>Update Book</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="container mx-auto p-6 bg-white shadow-md rounded-lg">
+      <h1 className="text-2xl font-bold mb-6">Update Book</h1>
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label>Title:</label>
-          <input type="text" name="title" value={formData.title} onChange={handleChange} required />
+          <label className="block text-gray-700 mb-2">Title:</label>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
         </div>
         <div>
-          <label>Author:</label>
-          <input type="text" name="author" value={formData.author} onChange={handleChange} required />
+          <label className="block text-gray-700 mb-2">Author:</label>
+          <input
+            type="text"
+            name="author"
+            value={formData.author}
+            onChange={handleChange}
+            required
+            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
         </div>
         <div>
-          <label>Description:</label>
-          <textarea name="description" value={formData.description} onChange={handleChange} required />
+          <label className="block text-gray-700 mb-2">Description:</label>
+          <textarea
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            required
+            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
         </div>
         <div>
-          <label>Published Date:</label>
-          <input type="date" name="publishedDate" value={formData.publishedDate} onChange={handleChange} required />
+          <label className="block text-gray-700 mb-2">Published Date:</label>
+          <input
+            type="date"
+            name="publishedDate"
+            value={formData.publishedDate}
+            onChange={handleChange}
+            required
+            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
         </div>
         <div>
-          <label>Page Count:</label>
-          <input type="number" name="pageCount" value={formData.pageCount} onChange={handleChange} required />
+          <label className="block text-gray-700 mb-2">Page Count:</label>
+          <input
+            type="number"
+            name="pageCount"
+            value={formData.pageCount}
+            onChange={handleChange}
+            required
+            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
         </div>
         <div>
-          <label>Category:</label>
-          <input type="text" name="category" value={formData.category} onChange={handleChange} required />
+          <label className="block text-gray-700 mb-2">Category:</label>
+          <input
+            type="text"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            required
+            className="border border-gray-300 rounded-lg w-full p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
         </div>
-        <button type="submit">Update Book</button>
+        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">
+          Update Book
+        </button>
       </form>
     </div>
   );

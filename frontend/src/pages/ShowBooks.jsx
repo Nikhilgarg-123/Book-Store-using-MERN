@@ -26,23 +26,24 @@ const ShowBooks = () => {
     fetchBook();
   }, [id]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading) return <div className="text-center mt-4">Loading...</div>;
+  if (error) return <div className="text-center mt-4 text-red-600">Error: {error}</div>;
 
   return (
-    <div>
+    <div className="container mx-auto p-6 bg-white shadow-md rounded-lg">
       {book ? (
         <div>
-          <h1>{book.title}</h1>
-          <h2>{book.author}</h2>
-          <p>{book.description}</p>
-          <p><strong>Published Date:</strong> {new Date(book.publishedDate).toLocaleDateString()}</p>
-          <p><strong>Page Count:</strong> {book.pageCount}</p>
-          <p><strong>Category:</strong> {book.category}</p>
-        
+          <h1 className="text-3xl font-bold mb-2">{book.title}</h1>
+          <h2 className="text-xl font-semibold text-gray-700 mb-4">{book.author}</h2>
+          <p className="mb-4">{book.description}</p>
+          <div className="space-y-2">
+            <p><strong>Published Date:</strong> {new Date(book.publishedDate).toLocaleDateString()}</p>
+            <p><strong>Page Count:</strong> {book.pageCount}</p>
+            <p><strong>Category:</strong> {book.category}</p>
+          </div>
         </div>
       ) : (
-        <div>No book found.</div>
+        <div className="text-center">No book found.</div>
       )}
     </div>
   );
