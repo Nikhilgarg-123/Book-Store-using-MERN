@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 const Book = require("../models/bookModel.js");
 
+
 // routes
 router.post("/books", async(req, res) => {
     try{
@@ -43,16 +44,24 @@ router.get("/book/:id", async(req, res) => {
     }
 })
 
-router.patch("/book/:id", async(req, res) => {
-    try{
-        const book = await Book.findByIdAndUpdate(req.params.id, req.body, {new:true});
+router.patch("/book/:id", async (req, res) => {
+    console.log("Request to update book with ID:", req.params.id);
+    console.log("Request body:", req.body);
+    
+    try {
+        const book = await Book.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        
+        if (!book) {
+            return res.status(404).json({ error: "Book not found" });
+        }
+
         res.send(book);
+    } catch (err) {
+        console.log("Error occurred:", err.message);
+        res.status(500).json({ error: err.message });
     }
-    catch(err){
-        console.log(err.message);
-        res.status(500).json({error:err.message})
-    }
-})
+});
+ 
 
 router.delete("/book/:id", async(req, res) => {
     try{
